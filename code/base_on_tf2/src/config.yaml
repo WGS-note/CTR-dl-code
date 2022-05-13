@@ -1,0 +1,67 @@
+# 本地运行路径
+read_path_criteo: '../../data/criteo_sampled_data_OK.csv'
+read_path_amazon: '../../data/amazon-books-100k-preprocessed.csv'
+
+# GPU运行路径
+#read_path_criteo: '/ad_ctr/data/criteo_sampled_data_OK.csv'
+#read_path_amazon: '/ad_ctr/data/amazon-books-100k-preprocessed.csv'
+
+train:
+  adam_lr: 0.001
+  batch_size: 2000
+  epochs: 1000
+FM:
+  embed_dim: 8
+  k: 8
+  w_reg: 0.001
+  v_reg: 0.001
+WDL:
+  embed_dim: 4
+  hidden_units: [256, 128, 32]
+  output_dim: 1
+  activation: 'relu'
+  droup_out: 0.1
+  w_reg: 0.001
+DCN:
+  embed_dim: 4
+  hidden_units: [256, 128, 32]
+  output_dim: 1
+  activation: 'relu'
+  droup_out: 0.25
+  layer_num: 3
+  reg_w: 0.01
+  reg_b: 0.01
+DeepFM:
+  embed_dim: 4
+  k: 8
+  w_reg: 0.01
+  v_reg: 0.01
+  hidden_units: [256, 128, 32]
+  output_dim: 1
+  activation: 'relu'
+  droup_out: 0.25
+NFM:
+  embed_dim: 4
+  hidden_units: [256, 128, 32]
+  output_dim: 1
+  activation: 'relu'
+  droup_out: 0.
+  w_reg: 0.0001
+DIN:
+  seq_dim: 8
+  fea_dim: 8
+  fc_dims: [256, 128, 64]
+  fc_dropout: 0.1
+  att_fc_dims: [80, 40]
+  att_dropout: 0.15
+DIEN:
+  seq_dim: 4
+  fea_dim: 4
+  mlp_dims: [32, 32]
+  gru_type: 'AUGRU'
+  extract_fc_dims: [100, 50]
+  extract_dropout: 0.
+  evolution_dropout: 0.2
+  att_dropout: 0.2
+  att_fc_dims: [32, 16]
+  alpha_aux_loss: 0.2
